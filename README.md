@@ -1,6 +1,6 @@
 🧾 **Customer Loss Data Pipeline (End-to-End DE Project)**
 
-This is a real-world data engineering project built using **Spark SQL on Databricks**. The goal was to design and implement a full data pipeline that simulates how companies manage customer loss, financial risk, and demographic analysis using production-grade data layers.
+This is a real-world data engineering project built using **Databricks**. The goal was to design and implement a full data pipeline that simulates how companies manage customer loss, financial risk, and demographic analysis using production-grade data layers.
 
 I built it using the **Medallion architecture**: Bronze → Silver → Silver Validated → Gold.
 
