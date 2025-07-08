@@ -1,3 +1,8 @@
+![image](https://github.com/user-attachments/assets/93447953-29fa-4582-bd69-498b5fa5496e)
+
+
+
+
 🧾 **Customer Loss Data Pipeline (End-to-End DE Project)**
 
 This is a real-world data engineering project built using **Databricks**. The goal was to design and implement a full data pipeline that simulates how companies manage customer loss, financial risk, and demographic analysis using production-grade data layers.
