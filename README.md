@@ -4,13 +4,11 @@ This is a real-world data engineering project built using **Spark SQL on Databri
 
 I built it using the **Medallion architecture**: Bronze → Silver → Silver Validated → Gold.
 
-No PySpark, no Python — just pure SQL magic with tight data quality rules, audit logic, and clean business insights.
-
 **💡 What's This Project About?**
 
 Imagine you're working at a utilities or finance company. You have messy customer account data with financial losses, risk flags, and demographic info. You need to clean it, validate it, and deliver solid, trustworthy data to your business teams.
 
-That's what this project does — it transforms raw customer loss data into fully usable BI and risk dashboards, through layered transformations.
+That's what this project does, it transforms raw customer loss data into fully usable BI and risk dashboards, through layered transformations.
 
 **🧱 Architecture Overview (Medallion Style)**
 
@@ -31,6 +29,12 @@ That's what this project does — it transforms raw customer loss data into full
 - **Databricks**
 - **Apache Spark SQL**
 - **Unity Catalog (Schema & Governance)**
+- **Medallion Architecture**
+- **Delta Lake**
+- **Data Quality Validation Rules**
+- **Dimensional Modeling**
+- **Versioning and Metadata Strategy**
+- **Git + GitHub**
 
 **📁 ETL Architecture**
 ## 🔄 ETL Flow Overview
@@ -57,7 +61,7 @@ This project follows a layered ETL approach using the Medallion architecture:
                                          │
                                          ▼
                ┌─────────────────────────────────────────────────┐
-               │     🧪 Silver Validated Layer                    │
+               │     🧪 Silver Validated Layer                   │
                │     Only high-confidence, valid rows            │
                │     + Flags, rejection reasons, row_hash, etc.  │
                │     Table: customer_loss_strict                 │
@@ -92,7 +96,6 @@ Each Gold table gives a different lens on customer risk and financial loss:
 
 Each one has clear, business-relevant KPIs and a custom `loss_risk_score`.
 
-
 **🧪 Data Quality Rules Used**
 
 In the Silver and Silver Validated layers, I used these validation checks:
@@ -126,12 +129,6 @@ I also added:
 - Monthly loss trend analysis
 - Early risk detection and customer targeting
 - Future: ML models for loss prediction
-
-**🔗 How to Use This Repo**
-
-You can explore each SQL file inside the `/sql` folder. Everything is modular and organized by layer. Each file runs on Databricks using pure Spark SQL (no need for PySpark).
-
-If you're running this yourself, place the sample dataset into the `sample_data` folder and ingest it into your `bronze` table. From there, follow each transformation layer step by step.
 
 **✍️ Author**
 
