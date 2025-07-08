@@ -28,28 +28,53 @@ That's what this project does — it transforms raw customer loss data into full
 
 **🧰 Tools & Stack**
 
-- **Databricks (SQL Workspace Only)**
+- **Databricks**
 - **Apache Spark SQL**
 - **Unity Catalog (Schema & Governance)**
 
-**📁 Folder Structure**
-customer-loss-data-pipeline/
-├── sql/
-│ ├── bronze/
-│ │ └── customer_loss_raw.sql
-│ ├── silver/
-│ │ └── customer_loss_clean.sql
-│ ├── silver_validated/
-│ │ └── customer_loss_strict.sql
-│ └── gold/
-│ ├── loss_summary_by_customer_type.sql
-│ ├── loss_summary_by_income_band.sql
-│ ├── monthly_loss_trends.sql
-│ └── loss_summary_by_mosaic_group.sql
-└── README.md
+**📁 ETL Architecture**
+## 🔄 ETL Flow Overview
+
+This project follows a layered ETL approach using the Medallion architecture:
+
+                            ┌──────────────────────────┐
+                            │   sample_data (.csv)     │
+                            └────────────┬─────────────┘
+                                         │
+                                         ▼
+                          ┌────────────────────────────┐
+                          │   🟫 Bronze Layer           │
+                          │   Raw data: no changes     │
+                          │   Table: customer_loss_raw │
+                          └────────────┬───────────────┘
+                                         │
+                                         ▼
+                          ┌────────────────────────────┐
+                          │   🥈 Silver Layer           │
+                          │   Typed, cleaned, enriched │
+                          │   Table: customer_loss_clean│
+                          └────────────┬───────────────┘
+                                         │
+                                         ▼
+               ┌─────────────────────────────────────────────────┐
+               │     🧪 Silver Validated Layer                    │
+               │     Only high-confidence, valid rows            │
+               │     + Flags, rejection reasons, row_hash, etc.  │
+               │     Table: customer_loss_strict                 │
+               └────────────┬────────────────────────────────────┘
+                            │
+                            ▼
+    ┌────────────────────────────────────────────────────────────────────┐
+    │                         🟡 Gold Layer                              │
+    │   Aggregated business insights for dashboards and reporting:       │
+    │   ├── loss_summary_by_customer_type                                │
+    │   ├── loss_summary_by_income_band                                  │
+    │   ├── monthly_loss_trends                                          │
+    │   └── loss_summary_by_mosaic_group                                 │
+    └────────────────────────────────────────────────────────────────────┘
 
 
-** 📊 What the Gold Tables Show**
+**📊 What the Gold Tables Show**
 
 Each Gold table gives a different lens on customer risk and financial loss:
 
