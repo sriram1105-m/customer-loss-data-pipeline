@@ -135,6 +135,25 @@ I also added:
 - Early risk detection and customer targeting
 - Future: ML models for loss prediction
 
+**⚙️ Pipeline Capabilities**
+
+This project reflects real-world ETL responsibilities as expected in modern data engineering roles:
+
+**✅ End-to-End ETL Pipeline**
+- Covers full ETL scope: ingest raw data, clean and validate, deliver business-ready outputs.
+- Built using modular SQL scripts, fully compatible with modern Lakehouse architecture.
+
+**✅ Batch Data Processing**
+- Data is processed in batch mode (daily/weekly) using Delta-like layer separation (Bronze → Gold).
+- Supports business use cases like financial reporting, risk monitoring, and churn analysis.
+
+**⚠️ Real-Time Compatible Design**
+- While this pipeline runs in batch mode, it’s structured to support real-time ingestion in production:
+  - Bronze layer could easily be fed by Kafka or Auto Loader
+  - Validation logic and transformations are stateless and stream-friendly
+- Design is ready for future integration with tools like **Delta Live Tables**, **Structured Streaming**, or **Apache Kafka**.
+
+
 **✍️ Author**
 
 A data engineer who doesn’t just write SQL — I **engineer trust into data**.
