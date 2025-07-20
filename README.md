@@ -3,17 +3,35 @@
 
 
 
-🧾 **Customer Loss Data Pipeline (End-to-End DE Project)**
+<h1>🧾 Customer Loss Data Pipeline (End-to-End DE Project) </h1>
 
-This is a real-world data engineering project built using **Databricks**. The goal was to design and implement a full data pipeline that simulates how companies manage customer loss, financial risk, and demographic analysis using production-grade data layers.
+A real world data engineering project using **Databricks**, **Spark SQL**, and **Delta Lake**
 
-I built it using the **Medallion architecture**: Bronze → Silver → Silver Validated → Gold.
+<h1>💼 Business Problem and Project Goal </h1>
 
-**💡 What's This Project About?**
+In critical industries like **finance** and  **utilities**, even a small increase in **customer churn** or **credit risk** can result in **millions in financial loss**. These companies collect vast amounts of customer data, but much of it is **incomplete, inconsistent, or unreliable**, making it difficult to derive actionable insights.
 
-Imagine you're working at a utilities or finance company. You have messy customer account data with financial losses, risk flags, and demographic info. You need to clean it, validate it, and deliver solid, trustworthy data to your business teams.
+The core issue is that **poor data quality** undermines everything that follows:
+- Reports are misleading
+- **Risk flags are missed**
+- Business users **lose trust in dashboards**
+- Analysts waste hours on **manual data cleanup** instead of delivering insights
 
-That's what this project does, it transforms raw customer loss data into fully usable BI and risk dashboards, through layered transformations.
+This project addresses that challenge by designing a **production-grade data pipeline** that takes **raw customer loss data** and transforms it into **trusted, validated, and analysis-ready insights.**
+The pipeline enforces strict **data quality rules**, applies **multi-stage validation**, tracks **row-level metadata**, and organizes data using the **Medallion architecture**. The end goal is to create a **high-confidence data layer** that supports **business reporting, risk dashboards,** and **predictive analytics** with full **auditability** and **traceability**.
+This is not just a technical build, it reflects how **modern data engineering** helps companies reduce risk, increase operational efficiency, and make **data-driven decisions** with confidence.
+
+**🧠 Project Summary**
+
+This project demonstrates a fully operational **ETL pipeline** built on **Databricks**, using **Spark SQL**, **Delta Lake**, and **Unity Catalog**. It simulates a real-world scenario where messy, high-volume customer data must be turned into **trustworthy, business-ready insights.**
+
+Data flows through a structured **Medallion Architecture:**
+- **Bronze Layer:** Raw ingest with no transformation
+- **Silver Layer:** Cleaned, typed, and enriched with derived fields
+- **Silver Validated Layer:** Strict validation with rejection tracking and scoring
+- **Gold Layer:** Aggregated **business KPIs** for use in **BI Dashboards, risk modelling,** and **churn analysis.**
+
+The result is a pipeline that supports everything from **operational reporting** to **machine learning**, all while maintaining high standards for **data quality, scalability, and governance.**
 
 **🧱 Architecture Overview (Medallion Style)**
 
@@ -52,16 +70,16 @@ This project follows a layered ETL approach using the Medallion architecture:
                                          │
                                          ▼
                           ┌────────────────────────────┐
-                          │   🟫 Bronze Layer           │
+                          │   🟫 Bronze Layer          │
                           │   Raw data: no changes     │
                           │   Table: customer_loss_raw │
                           └────────────┬───────────────┘
                                          │
                                          ▼
                           ┌────────────────────────────┐
-                          │   🥈 Silver Layer           │
+                          │   🥈 Silver Layer          │
                           │   Typed, cleaned, enriched │
-                          │   Table: customer_loss_clean│
+                          │  Table: customer_loss_clean│
                           └────────────┬───────────────┘
                                          │
                                          ▼
@@ -156,7 +174,7 @@ This project reflects real-world ETL responsibilities as expected in modern data
 
 **✍️ Author**
 
-A data engineer who doesn’t just write SQL — I **engineer trust into data**.
+A data engineer who doesn’t just write SQL. I **engineer trust into data**.
 If you're into clean architecture, business-aware pipelines, and solving real problems with explainable data... we should talk.
 Feel free to reach out if you'd like a walkthrough, feedback, or want to build something exceptional together.
 
